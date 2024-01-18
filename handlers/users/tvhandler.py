@@ -4,8 +4,6 @@ from loader import dp
 from keyboards.default.tvmenu import menutv
 from aiogram import bot
 
-
-from bs4 import BeautifulSoup
 from datetime import datetime
 
 today = datetime.now().strftime("%Y-%m-%d")
