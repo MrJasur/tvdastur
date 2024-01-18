@@ -4,11 +4,9 @@ from keyboards.default.tvmenu import menutv
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
-
-TOKEN = '6530225680:AAHNAO2RpOR-RYPpQny4uZd8GDi7nQc-KLI'
-from aiogram import Bot
-bot = Bot(token=TOKEN)
+from data.config import ADMINS
 from aiogram.types import ParseMode
+import logging
 
 today = datetime.now().strftime("%Y-%m-%d")
 
@@ -70,5 +68,10 @@ async def tv_handler(msg: types.Message):
         forchannel = '🔹🔹🔹🔹🔹🔹'+text+'🔹🔹🔹🔹🔹🔹'+'\n\n' + message_text+'\n\n'+'📆'+today+'\n'+'©️tvinfo.uz'
         # Send the single message
         await msg.answer('🔹🔹🔹🔹🔹🔹'+text+'🔹🔹🔹🔹🔹🔹'+'\n\n'+ message_text+'\n\n'+'📆'+today+'\n'+'©️tvinfo.uz')
-        await bot.send_message(chat_id=-1001261169916, text=f"{forchannel}", parse_mode=ParseMode.HTML)
+        for admin in ADMINS:
+            try:
+                await dp.bot.send_message(chat_id=-1001261169916, text=f"{forchannel}", parse_mode=ParseMode.HTML)
+
+            except Exception as err:
+                logging.exception(err)
 
