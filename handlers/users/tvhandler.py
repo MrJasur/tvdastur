@@ -53,6 +53,10 @@ async def tv_handler(msg: types.Message):
                 if class_name == 'flex text-sm text-[#EA580C] font-semibold':
                     title_text += ' ✅'
 
+                # Check if the class is 'flex text-sm text-[#EA580C] font-semibold' and add ✅
+                if class_name == 'flex text-sm text-gray-400':
+                    title_text = f"<s>{title_text}</s>"
+
                 time_title_pairs.append((time_text, title_text))
 
             all_time_title_pairs.extend(time_title_pairs)
