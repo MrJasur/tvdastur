@@ -3,7 +3,7 @@ from aiogram.dispatcher.filters.builtin import Command
 from loader import dp
 from keyboards.default.tvmenu import menutv
 from aiogram import bot
-
+import requests
 from datetime import datetime
 
 today = datetime.now().strftime("%Y-%m-%d")
