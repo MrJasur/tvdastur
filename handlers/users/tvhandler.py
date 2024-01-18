@@ -1,11 +1,14 @@
 from aiogram import types
-from aiogram.dispatcher.filters.builtin import Command
 from loader import dp
 from keyboards.default.tvmenu import menutv
-from aiogram import bot
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
+
+TOKEN = '6530225680:AAHNAO2RpOR-RYPpQny4uZd8GDi7nQc-KLI'
+from aiogram import Bot
+bot = Bot(token=TOKEN)
+from aiogram.types import ParseMode
 
 today = datetime.now().strftime("%Y-%m-%d")
 
@@ -53,7 +56,7 @@ async def tv_handler(msg: types.Message):
                 if class_name == 'flex text-sm text-[#EA580C] font-semibold':
                     title_text += ' ✅'
 
-                # Check if the class is 'flex text-sm text-[#EA580C] font-semibold' and add ✅
+                # Check if
                 if class_name == 'flex text-sm text-gray-400':
                     title_text = f"<s>{title_text}</s>"
 
@@ -64,7 +67,8 @@ async def tv_handler(msg: types.Message):
         # Prepare a single message with all time and title pairs
         message_text = '\n'.join([f"🕔 {time},  ➖ {title}" for time, title in all_time_title_pairs])
 
+        forchannel = '🔹🔹🔹🔹🔹🔹'+text+'🔹🔹🔹🔹🔹🔹'+'\n\n' + message_text+'\n\n'+'©️tvinfo.uz'
         # Send the single message
         sent_message = await msg.answer('🔹🔹🔹🔹🔹🔹'+text+'🔹🔹🔹🔹🔹🔹'+'\n\n' + message_text+'\n\n'+'©️tvinfo.uz')
-
+        await bot.send_message(chat_id=-1001261169916, text=f"{forchannel}", parse_mode=ParseMode.HTML)
 
