@@ -4,7 +4,7 @@ from loader import dp
 from keyboards.default.tvmenu import menutv
 from aiogram import bot
 
-import requests
+
 from bs4 import BeautifulSoup
 from datetime import datetime
 
