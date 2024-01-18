@@ -3,10 +3,9 @@ from aiogram.dispatcher.filters.builtin import Command
 from loader import dp
 from keyboards.default.tvmenu import menutv
 from aiogram import bot
-
 import requests
-from bs4 import BeautifulSoup
 from datetime import datetime
+from bs4 import BeautifulSoup
 
 today = datetime.now().strftime("%Y-%m-%d")
 
@@ -64,5 +63,4 @@ async def tv_handler(msg: types.Message):
         # Send the single message
         sent_message = await msg.answer('🔹🔹🔹🔹🔹🔹'+text+'🔹🔹🔹🔹🔹🔹'+'\n\n' + message_text+'\n\n'+'©️tvinfo.uz')
 
-        channel_id = -1001261169916  # Replace with your channel username or ID
-        await bot.forward_message(chat_id=channel_id, text=message_text)
+
