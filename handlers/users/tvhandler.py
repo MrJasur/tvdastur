@@ -5,6 +5,7 @@ from keyboards.default.tvmenu import menutv
 from aiogram import bot
 import requests
 from datetime import datetime
+from bs4 import BeautifulSoup
 
 today = datetime.now().strftime("%Y-%m-%d")
 
