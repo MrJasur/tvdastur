@@ -67,8 +67,8 @@ async def tv_handler(msg: types.Message):
         # Prepare a single message with all time and title pairs
         message_text = '\n'.join([f"🕔 {time},  ➖ {title}" for time, title in all_time_title_pairs])
 
-        forchannel = '🔹🔹🔹🔹🔹🔹'+text+'🔹🔹🔹🔹🔹🔹'+'\n\n' + message_text+'\n\n'+'©️tvinfo.uz'
+        forchannel = '🔹🔹🔹🔹🔹🔹'+text+'🔹🔹🔹🔹🔹🔹'+'\n\n' + message_text+'\n\n'+'📆'+today+'\n'+'©️tvinfo.uz'
         # Send the single message
-        sent_message = await msg.answer('🔹🔹🔹🔹🔹🔹'+text+'🔹🔹🔹🔹🔹🔹'+'\n\n' + message_text+'\n\n'+'©️tvinfo.uz')
+        await msg.answer('🔹🔹🔹🔹🔹🔹'+text+'🔹🔹🔹🔹🔹🔹'+'\n\n'+ message_text+'\n\n'+'📆'+today+'\n'+'©️tvinfo.uz')
         await bot.send_message(chat_id=-1001261169916, text=f"{forchannel}", parse_mode=ParseMode.HTML)
 
