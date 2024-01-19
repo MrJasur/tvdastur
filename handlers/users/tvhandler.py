@@ -4,11 +4,10 @@ from keyboards.default.tvmenu import menutv
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
-from data.config import ADMINS
 from aiogram.types import ParseMode
-import logging
-
-today = datetime.now().strftime("%Y-%m-%d")
+import pytz
+uzbekistan_time = datetime.now(pytz.timezone('Asia/Tashkent'))
+today = uzbekistan_time.strftime("%Y-%m-%d")
 
 @dp.message_handler(text='Tv Dasturlar')
 async def show_tvdasturlar(msg: types.Message):
