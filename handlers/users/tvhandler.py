@@ -1,11 +1,13 @@
 from aiogram import types
-from loader import dp
+from loader import dp,bot,db
 from keyboards.default.tvmenu import menutv
+from data.config import ADMINS
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 from aiogram.types import ParseMode
 import pytz
+import sqlite3
 uzbekistan_time = datetime.now(pytz.timezone('Asia/Tashkent'))
 today = uzbekistan_time.strftime("%Y-%m-%d")
 
@@ -33,6 +35,15 @@ async def get_schedule_entries(url):
 
 @dp.message_handler()
 async def tv_handler(msg: types.Message):
+    await bot.send_message(chat_id=ADMINS[0], text=f"{msg.from_user.full_name} botdan foydalandi.")
+    name = msg.from_user.full_name
+    username = msg.from_user.username
+    try:
+        db.add_user(id=msg.from_user.id,
+                    name=name, Username=username)
+    except sqlite3.IntegrityError as err:
+        await bot.send_message(chat_id=ADMINS[0], text=err)
+
     text = msg.text
     result = text.lower()
 
